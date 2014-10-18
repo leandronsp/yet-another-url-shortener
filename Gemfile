@@ -11,7 +11,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
-  gem 'pry-byebug'
+  gem 'pry'
+end
+
+group :test do
+  gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'simplecov'

@@ -8,6 +8,12 @@ describe Shortener do
       expect(described_class.encode62(35)).to eq('z')
       expect(described_class.encode62(62)).to eq('10')
       expect(described_class.encode62(63)).to eq('11')
+
+      # 916M unique URL's should produce a 5' lenght key
+      expect(described_class.encode62(916000000)).to eq('ZZrry')
+
+      # from the 917Mth should produce a 6' lenght key
+      expect(described_class.encode62(917000000)).to eq('103DAA')
     end
 
     specify 'invalid range character' do
