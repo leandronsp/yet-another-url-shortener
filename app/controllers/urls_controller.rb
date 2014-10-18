@@ -10,7 +10,7 @@ class UrlsController < ApplicationController
 
     render nothing: true,
       status: 200,
-      location: "#{request.protocol}#{request.domain}/#{encoded}"
+      location: "#{domain_url}/#{encoded}"
   end
 
   def original

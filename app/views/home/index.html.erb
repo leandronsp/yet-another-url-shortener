@@ -1,0 +1,34 @@
+<h1 class='center'>URL Shortener</h1>
+
+<form id='shortenForm'>
+  <div>
+    <input type='text' name='url' class='center' id='url'>
+    <input type='submit' value=<%= t('buttons.shorten') %>>
+  </div>
+  <p class='error'></p>
+</form>
+
+<script type='text/javascript'>
+  $(document).ready(function() {
+    $('#shortenForm').submit(function(event) {
+      $.ajax({
+          type: 'POST',
+          url: '/',
+          data: { url: $('#url').val() },
+          success: function(data, status, xhr) {
+            $('p.error').hide();
+            $('#url').val(xhr.getResponseHeader('Location'))
+          },
+          error: function(xhr) {
+            console.log(xhr.status)
+            if (xhr.status == 400)  {
+              $('p.error').text('Invalid url');
+              $('p.error').show();
+            }
+          }
+      })
+
+      event.preventDefault();
+    });
+  });
+</script>

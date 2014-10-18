@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+    font-family: menlo;
+}
+
+h1.center {
+  position: fixed;
+  top: 10%;
+  margin-left: -140px;
+  left: 50%;
+}
+
+input.center {
+  height: 45px;
+  width: 465px;
+  text-align: center;
+  margin-top: 200px;
+  margin-left: 470px;
+  font-size: 25px;
+}
+
+p.error {
+  width: 200px;
+  margin-left: 610px;
+  text-align: center;
+  height: 30px;
+  font-size: 20px;
+  display: none;
+  background-color: #DE3530;
+}
