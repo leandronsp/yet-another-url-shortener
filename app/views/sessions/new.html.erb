@@ -1,0 +1,11 @@
+<h1 class='center'>Sign in</h1>
+
+<form action='/sign_in' method='POST'>
+  <div class='center'>
+    <input name="authenticity_token" type="hidden" value=<%= form_authenticity_token %> />
+    <input type='text' name='user[email]' placeholder='Your Email'>
+    <input type='password' name='user[password]' placeholder='Your password'>
+    <input type='submit' class='button' value=<%= t('buttons.sign_in') %>>
+  </div>
+  <p class='error'></p>
+</form>

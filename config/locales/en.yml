@@ -1,4 +1,10 @@
 en:
   hello: "Hello world"
   buttons:
-    shorten: 'Shorten'
+    shorten:  'Shorten'
+    register: 'Register'
+    sign_in:  'Sign in'
+  sign_up: 'Sign up'
+  sign_in: 'Sign in'
+  logout:  'Log out'
+  dashboard: 'Dashboard'

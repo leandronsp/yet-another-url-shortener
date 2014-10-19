@@ -20,4 +20,5 @@ group :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'simplecov'
+  gem 'machinist'
 end

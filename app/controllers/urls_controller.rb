@@ -1,6 +1,10 @@
 class UrlsController < ApplicationController
   def create
-    model = Url.find_or_create_by(url: params[:url])
+    model = Url.where(url: params[:url]).first
+
+    if model.blank?
+      model = Url.create(url: params[:url], user_id: @current_user.id)
+    end
 
     if model.errors.present? && model.errors.messages[:url].present?
       return head :bad_request

@@ -11,15 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018134120) do
+ActiveRecord::Schema.define(version: 20141018232151) do
 
   create_table "urls", force: true do |t|
     t.text     "url"
     t.integer  "number_of_visits", default: 0
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "urls", ["url"], name: "index_urls_on_url"
+  add_index "urls", ["url"], name: "index_urls_on_url", unique: true
+  add_index "urls", ["user_id"], name: "index_urls_on_user_id"
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "encrypted_password"
+    t.string   "salt"
+    t.string   "role",               default: "user"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end

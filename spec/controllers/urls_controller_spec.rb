@@ -38,6 +38,19 @@ describe UrlsController, type: :controller do
       expect(response.location).to eq('http://test.host/1')
     end
 
+    context 'with current user' do
+      let(:user) { User.make! }
+
+      before do
+        session[:user_id] = user.id
+        post :create, url: 'http://custom.com/cool.html'
+      end
+
+      it 'makes the user relation' do
+        expect(user.urls.first.url).to eq('http://custom.com/cool.html')
+      end
+    end
+
     context 'already exists' do
       before do
         post :create, url: 'http://domain.com/cool.html'
