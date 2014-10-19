@@ -8,19 +8,21 @@
 </head>
 <body>
 
-<%= link_to t('home'), root_path %>
+<div class='menu'>
+  <%= link_to t('shorten_it'), root_path %>
+
+  <% if @current_user.authenticated? %>
+    <%= link_to t('dashboard'), manage_path %>
+    <%= link_to t('logout'), logout_path %>
+    <p>Hello, <%= @current_user.name %></p>
+  <% else %>
+    <%= link_to t('sign_in'), sign_in_path %>
+    <%= link_to t('sign_up'), sign_up_path %>
+  <% end %>
+</div>
 
 <% flash.each do |name, msg| %>
-  <div class=<%= name %>><%= msg %></div>
-<% end %>
-
-<% if @current_user.authenticated? %>
-  Hello, <%= @current_user.name %>
-  <%= link_to t('logout'), logout_path %>
-  <%= link_to t('dashboard'), manage_path %>
-<% else %>
-  <%= link_to t('sign_up'), sign_up_path %>
-  <%= link_to t('sign_in'), sign_in_path %>
+  <p class=<%= name %>><%= msg %></div>
 <% end %>
 
 <%= yield %>

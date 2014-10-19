@@ -1,13 +1,13 @@
-<h1 class='center'>URL Shortener</h1>
+<div class='center'>
+  <h1>URL Shortener</h1>
 
-<form id='shortenForm'>
-  <div>
-    <input type='text' name='url' placeholder='Paste a link to shorten it' class='center unique' id='url'>
+  <form id='shortenForm'>
+    <input type='text' name='url' placeholder='Paste a link to shorten it' id='url'>
     <input type='submit' class='button' value=<%= t('buttons.shorten') %>>
-  </div>
-  <p class='error'></p>
-  <p class='success'></p>
-</form>
+    <p class='message'></p>
+  </form>
+
+</div>
 
 <script type='text/javascript'>
   $(document).ready(function() {
@@ -18,18 +18,16 @@
           data: { url: $('#url').val() },
           success: function(data, status, xhr) {
             $('#url').removeClass('inputError');
-            $('p.error').hide();
             $('#url').val(xhr.getResponseHeader('Location'))
             $('#url').select();
-            $('p.success').text('Such a shortened url! Feel free to copy it!')
-            $('p.success').show();
+            $('p.message').text('Such a shortened url! Feel free to copy it!')
+            $('p.message').show();
           },
           error: function(xhr) {
             console.log(xhr.status)
             if (xhr.status == 400)  {
-              $('p.success').hide();
-              $('p.error').text('Invalid url');
-              $('p.error').show();
+              $('p.message').text('Invalid url');
+              $('p.message').show();
               $('#url').addClass('inputError');
               $('#url').select();
             }

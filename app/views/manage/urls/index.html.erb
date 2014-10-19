@@ -1,3 +1,24 @@
-<% @urls.each do |model| %>
-  <%= model.url %>|<%= model.key %>|<%= model.number_of_visits %>
-<% end %>
+<div class='center'>
+
+  <% if @current_user.admin? %>
+    <a class='filter' href=<%= manage_path(scope: :all) %>><%= t('all') %></a> | <a href=<%= manage_path %>><%= t('my_links') %></a>
+  <% end %>
+
+  <% if @scope == 'all' %>
+    <h1>Manage Links</h1>
+  <% else %>
+    <h1>My Links</h1>
+  <% end %>
+
+  <ul>
+    <% @urls.each do |model| %>
+      <li>
+        <a target='_blank' title=<%= model.url %> href=<%= model.url %>><%= "#{root_url}#{model.key}" %></a> | <%= model.number_of_visits %> visits
+      </li>
+    <% end %>
+  </ul>
+
+  <% if @urls.blank? %>
+    <p><%= t('no_links_yet') %></p>
+  <% end %>
+</div>

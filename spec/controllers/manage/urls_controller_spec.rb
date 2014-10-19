@@ -14,6 +14,41 @@ describe Manage::UrlsController, type: :controller do
       expect(response.body).to match(model.key)
     end
 
+    context 'admin' do
+      let(:user) { User.make!(role: 'admin') }
+      let(:url)  { Url.make!(user_id: user.id) }
+
+      before do
+        session[:user_id] = user.id
+        get :index
+      end
+
+      it 'renders with filter `All | My links`' do
+        expect(response.body).to match('All')
+        expect(response.body).to match('My Links')
+      end
+
+      it 'renders title `My Links`' do
+        expect(response.body).to match('<h1>My Links</h1>')
+      end
+
+      context 'scope all' do
+        before do
+          session[:user_id] = user.id
+          get :index, scope: 'all'
+        end
+
+        it 'renders with filter `All | My links`' do
+          expect(response.body).to match('All')
+          expect(response.body).to match('My Links')
+        end
+
+        it 'renders title `Manage Links`' do
+          expect(response.body).to match('<h1>Manage Links</h1>')
+        end
+      end
+    end
+
     context 'unauthenticated' do
       it 'redirects to sign in page' do
         get :index

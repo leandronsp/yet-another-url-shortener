@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
+      flash[:success] = 'User registered with success!'
       redirect_to manage_path
     else
       flash.now[:error] = user.errors.full_messages.join(',')

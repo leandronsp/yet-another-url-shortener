@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
     user = User.authenticate!(*user_params.values_at(:email, :password))
     if user
       session[:user_id] = user.id
+      flash[:success] = 'Sign in successfully!'
       redirect_to manage_path
     else
       flash.now[:error] = 'Email/Password invalid'

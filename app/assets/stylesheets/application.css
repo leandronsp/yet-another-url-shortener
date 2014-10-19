@@ -18,60 +18,77 @@
     font-family: menlo;
 }
 
-h1.center {
-  position: fixed;
-  top: 10%;
-  margin-left: -140px;
-  left: 50%;
-}
-
-input.center.unique {
-  height: 45px;
-  width: 465px;
-  margin-top: 200px;
-  margin-left: 470px;
-  font-size: 25px;
-  padding-left: 10px;
+h1 {
+  text-align: center;
+  padding-bottom: 50px;
 }
 
 div.center {
-  margin-top: 200px;
-  margin-left: 470px;
+  position: absolute;
+  margin-left: 33%;
+  margin-right: 50%;
+  margin-top: 10%;
 }
 
-div.center > input {
-    font-size: 25px;
-    padding-left: 10px;
-    height: 45px;
-    width: 50%;
-    margin-bottom: 30px;
+div.center input {
+  height: 45px;
+  width: 465px;
+  font-size: 25px;
+  padding-left: 10px;
+  margin-bottom: 30px;
+}
+
+div.center p.message {
+  height: 45px;
+  width: 465px;
+  font-size: 15px;
+  text-align: center;
+  display: none;
+}
+
+div.center p {
+  height: 45px;
+  width: 465px;
+  font-size: 15px;
+  text-align: center;
+}
+
+div.center ul {
+  width: 420px;
+}
+
+div.center a.filter {
+  margin-left: 165px;
+}
+
+div.center ul > li {
+  padding-bottom: 10px;
+}
+
+div.menu {
+  float: right;
 }
 
 .inputError {
   border-color: red;
 }
 
-div.error {
+p.error {
   background: red;
   text-align: center;
+  display: inline-block;
+  width: 100%;
 }
 
-p.error {
-  width: 200px;
-  margin-left: 610px;
-  text-align: center;
-  height: 30px;
-  font-size: 15px;
+p.hidden {
   display: none;
 }
 
 p.success {
-  width: 200px;
-  margin-left: 610px;
+  background: green;
   text-align: center;
-  height: 30px;
-  font-size: 15px;
-  display: none;
+  display: inline-block;
+  width: 100%;
 }
 
 /*

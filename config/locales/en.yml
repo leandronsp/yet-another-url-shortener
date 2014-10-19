@@ -8,3 +8,7 @@ en:
   sign_in: 'Sign in'
   logout:  'Log out'
   dashboard: 'Dashboard'
+  shorten_it: 'Shorten it!'
+  all: 'All'
+  my_links: 'My Links'
+  no_links_yet: "Looks like you don't have any link. Go Shorten it!"
