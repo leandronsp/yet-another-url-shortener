@@ -17,7 +17,7 @@ end
 
 group :test do
   gem 'database_cleaner'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.1'
   gem 'guard-rspec'
   gem 'simplecov'
   gem 'machinist'
