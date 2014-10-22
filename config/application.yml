@@ -1,0 +1,6 @@
+development:
+  app_host: 'http://localhost:3000'
+test:
+  app_host: 'http://test.host'
+production:
+  app_host: 'http://yau-shortener.herokuapp.com'

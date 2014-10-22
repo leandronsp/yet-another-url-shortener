@@ -6,11 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :build_current_user
 
   def domain_url
-    if Rails.env.development?
-      "#{request.protocol}#{request.domain}:#{request.port}"
-    else
-      "#{request.protocol}#{request.domain}"
-    end
+    "#{Settings.app_host}"
   end
 
   private
