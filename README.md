@@ -7,7 +7,8 @@ Yet Another URL Shortener
 
 URL Shortener on top of Base 62 algorithm
 
-* Rails 4
+* Ruby 2.2.3+
+* Rails 4.2+
 * RSpec
 * Simplecov
 * Guard
