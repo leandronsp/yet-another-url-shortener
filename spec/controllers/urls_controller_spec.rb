@@ -5,20 +5,20 @@ describe UrlsController, type: :controller do
     end
 
     it 'redirects to the original url' do
-      get :original, key: '3d7'
+      get :original, params: { key: '3d7' }
       expect(response).to redirect_to('http://domain/profile.html')
     end
 
     it 'increments the number of visits' do
-      get :original, key: '3d7'
-      get :original, key: '3d7' # second visit
+      get :original, params: { key: '3d7' }
+      get :original, params: { key: '3d7' } #second visit
 
       expect(Url.find(12345).number_of_visits).to eq(2)
     end
 
     context 'not found' do
       it 'returns 404' do
-        get :original, key: 'abc'
+        get :original, params: { key: 'abc' }
         expect(response.code).to eq('404')
       end
     end
@@ -26,7 +26,7 @@ describe UrlsController, type: :controller do
 
   describe 'POST /' do
     before do
-      post :create, url: 'http://domain.com/cool.html'
+      post :create, params: { url: 'http://domain.com/cool.html' }
     end
 
     it 'saves the url' do
@@ -34,7 +34,7 @@ describe UrlsController, type: :controller do
     end
 
     it 'returns the shortened url into Location' do
-      expect(response.code).to eq('200')
+      expect(response.code).to eq('201')
       expect(response.location).to eq('http://test.host/1')
     end
 
@@ -43,7 +43,7 @@ describe UrlsController, type: :controller do
 
       before do
         session[:user_id] = user.id
-        post :create, url: 'http://custom.com/cool.html'
+        post :create, params: { url: 'http://custom.com/cool.html' }
       end
 
       it 'makes the user relation' do
@@ -53,22 +53,22 @@ describe UrlsController, type: :controller do
 
     context 'already exists' do
       before do
-        post :create, url: 'http://domain.com/cool.html'
+        post :create, params: { url: 'http://domain.com/cool.html' }
       end
 
       it 'does not save' do
-        Url.count.should eq(1)
+        expect(Url.count).to eq(1)
       end
 
       it 'returns the existent shortened url into Location' do
-        expect(response.code).to eq('200')
+        expect(response.code).to eq('201')
         expect(response.location).to eq('http://test.host/1')
       end
     end
 
     context 'invalid url' do
       before do
-        post :create, url: 'invalid.url'
+        post :create, params: { url: 'invalid.url' }
       end
 
       it 'returns bad request status code' do

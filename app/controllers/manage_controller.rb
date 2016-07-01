@@ -1,6 +1,6 @@
 class ManageController < ApplicationController
 
-  before_filter :check_authorization
+  before_action :check_authorization
 
   def check_authorization
     unless @current_user.authenticated?

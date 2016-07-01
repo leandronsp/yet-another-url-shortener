@@ -35,7 +35,7 @@ describe Manage::UrlsController, type: :controller do
       context 'scope all' do
         before do
           session[:user_id] = user.id
-          get :index, scope: 'all'
+          get :index, params: { scope: 'all' }
         end
 
         it 'renders with filter `All | My links`' do

@@ -12,9 +12,7 @@ class UrlsController < ApplicationController
 
     encoded = Shortener.encode62(model.id)
 
-    render nothing: true,
-      status: 200,
-      location: "#{domain_url}/#{encoded}"
+    head :created, location: "#{domain_url}/#{encoded}"
   end
 
   def original
